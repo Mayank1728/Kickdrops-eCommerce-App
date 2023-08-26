@@ -104,7 +104,7 @@ class ProductDetails extends StatelessWidget {
                           Container(
                             height: 30,
                             width: 30,
-                            child: FavouriteIcon(),
+                            child: FavouriteIcon(index: imgIndex),
                           ),
                         ],
                       ),

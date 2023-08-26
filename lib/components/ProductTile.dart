@@ -9,8 +9,7 @@ import 'icons.dart';
 
 class ProductTile extends StatelessWidget {
   final int imgIdx;
-
-  const ProductTile({super.key, this.imgIdx = 0});
+  ProductTile({super.key, this.imgIdx = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class ProductTile extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(30)),
-                        child: FavouriteIcon())),
+                        child: FavouriteIcon(index: imgIdx))),
               ],
             ),
             Container(

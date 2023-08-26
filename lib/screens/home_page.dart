@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nike_store/components/ProductTile.dart';
+import 'package:nike_store/controller/products_controllers.dart';
 import 'package:nike_store/utils/colors.dart';
 import '../components/app_text.dart';
 import '../components/icons.dart';
@@ -83,11 +85,11 @@ class HomePage extends StatelessWidget {
                           iconColor: AppColors.appMainColor,
                         ),
                         AppText(
-                            text: "Ship to ",
+                            text: "Ship to",
                             fontSize: 16,
                             fontColor: Colors.grey[600]),
                         AppText(
-                          text: "JI. Malioboro, Block Z 18",
+                          text: "VGN Southern Avenue, Chennai",
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -99,15 +101,17 @@ class HomePage extends StatelessWidget {
                     height: 15,
                   ),
                   Expanded(
-                    child: Container(
-                      //color: Colors.blue,
-                      width: 340,
-                      child: ListView.builder(
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return _twoTiles(index);
-                          }),
-                    ),
+                    child: GetBuilder<ProductController>(builder: (productController){
+                          return Container(
+                            //color: Colors.blue,
+                            width: 340,
+                            child: ListView.builder(
+                                itemCount: 5,
+                                itemBuilder: (context, index) {
+                                  return _twoTiles(index, productController.productList);
+                                }),
+                          );
+                    }),
                   )
                 ],
               ),
@@ -159,7 +163,7 @@ class HomePage extends StatelessWidget {
   // 1 -> 3, 4
   // 2 -> 5, 6
 
-  Widget? _twoTiles(int index) {
+  Widget _twoTiles(int index, List<bool> productList) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
